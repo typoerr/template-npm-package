@@ -7,5 +7,11 @@
     "node": true,
     "commonjs": true,
     "es6": true
-  }
+  },
+  "ignorePatterns": [
+    "/public/**",
+    "/dist/**",
+    "/es/**",
+    "**/node_modules/**"
+  ]
 }

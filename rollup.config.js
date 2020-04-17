@@ -7,7 +7,7 @@ const base = path.resolve(__dirname)
 const tsconfig = path.join(base, 'tsconfig.json')
 
 // Prevent bundling (peer)dependencies in package.json
-const keys = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies })
+const keys = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).map(RegExp)
 const external = (id) => keys.some((key) => key.test(id))
 
 export default {

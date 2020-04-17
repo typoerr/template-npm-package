@@ -1,9 +1,14 @@
 import * as path from 'path'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
+import pkg from './package.json'
 
 const base = path.resolve(__dirname)
 const tsconfig = path.join(base, 'tsconfig.json')
+
+// Prevent bundling (peer)dependencies in package.json
+const keys = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies })
+const external = (id) => keys.some((key) => key.test(id))
 
 export default {
   input: 'src/index.ts',
@@ -29,6 +34,7 @@ export default {
     },
   ],
   context: 'this',
+  external,
   plugins: [
     typescript({
       tsconfig,

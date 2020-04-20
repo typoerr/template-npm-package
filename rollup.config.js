@@ -1,14 +1,9 @@
 import * as path from 'path'
-import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
-import pkg from './package.json'
+import autoExternal from 'rollup-plugin-auto-external'
 
 const base = path.resolve(__dirname)
 const tsconfig = path.join(base, 'tsconfig.json')
-
-// Prevent bundling (peer)dependencies in package.json
-const keys = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).map(RegExp)
-const external = (id) => keys.some((key) => key.test(id))
 
 export default {
   input: 'src/index.ts',
@@ -34,13 +29,16 @@ export default {
     },
   ],
   context: 'this',
-  external,
   plugins: [
+    autoExternal({
+      builtins: false,
+      packagePath: './package.json',
+    }),
     typescript({
       tsconfig,
       // [Issue #287 · rollup/plugins](https://github.com/rollup/plugins/issues/287)
       rootDir: './src',
+      module: 'ESNext',
     }),
-    resolve(),
   ],
 }

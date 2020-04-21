@@ -1,3 +1,5 @@
-test('initial test', () => {
-  expect(1).toBe(1)
+import test from 'ava'
+
+test('initial test', (t) => {
+  t.pass()
 })

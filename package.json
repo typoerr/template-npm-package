@@ -6,7 +6,6 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
-  "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "files": [
     "src",
@@ -46,9 +45,9 @@
     "lint": "eslint src/**/*.ts test/**/*.ts",
     "type-check": "tsc --noEmit",
     "npm-publish": "yarn publish",
-    "git:push": "git push -u origin master",
+    "git:push": "git push",
     "git:push:tag": "git push --tag",
-    "release": "run-s lint test compile npm-publish clean, git:**",
+    "release": "run-s lint test compile npm-publish clean git:**",
     "test": "ava --config ./ava.config.js"
   },
   "publishConfig": {

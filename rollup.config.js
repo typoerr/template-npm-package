@@ -20,13 +20,13 @@ export default {
       format: 'es',
       sourcemap: true,
     },
-    {
-      dir: 'dist',
-      // name: '',
-      entryFileNames: '[name].umd.js',
-      format: 'umd',
-      sourcemap: true,
-    },
+    // {
+    //   dir: 'dist',
+    //   name: '',
+    //   entryFileNames: '[name].umd.js',
+    //   format: 'umd',
+    //   sourcemap: true,
+    // },
   ],
   context: 'this',
   plugins: [
@@ -38,6 +38,7 @@ export default {
       tsconfig,
       // [Issue #287 · rollup/plugins](https://github.com/rollup/plugins/issues/287)
       rootDir: './src',
+      include: ['./src/**/*.ts'],
       module: 'ESNext',
     }),
   ],

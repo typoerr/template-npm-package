@@ -3,14 +3,10 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "target": "ES2015",
-    "lib": [
-      "ES2019"
-    ],
+    "lib": ["ES2019"],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "declaration": true,
     "outDir": "dist",
@@ -25,15 +21,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipDefaultLibCheck": true,
     "pretty": true,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"]
 }
